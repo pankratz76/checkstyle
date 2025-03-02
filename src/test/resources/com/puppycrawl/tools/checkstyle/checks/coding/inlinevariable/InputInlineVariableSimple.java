@@ -5,17 +5,13 @@ InlineVariable
 package com.puppycrawl.tools.checkstyle.checks.coding.inlinevariable;
 
 public class InputInlineVariableSimple {
-    public InputInlineVariableSimple() {
-        used();
+    private String used() {
+        String s = used2(); // violation, "InputInlineVariableSimple 's'"
+        return s;
     }
 
-    private void used() {
-        used2();
+    private String used2() {
+        return "String";
     }
 
-    private void used2() {
-    }
-
-    private void unused2() { // violation, "Unused local method 'unused2'"
-    }
 }

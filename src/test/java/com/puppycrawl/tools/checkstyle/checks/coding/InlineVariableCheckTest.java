@@ -37,7 +37,7 @@ public class InlineVariableCheckTest extends AbstractModuleTestSupport {
     @Test
     public void chain() throws Exception {
         verifyWithInlineConfigParser(getPath("InputInlineVariableSimple.java"),
-                List.of("19:5: " + getCheckMessage(MSG_UNUSED_LOCAL_METHOD, "unused2")));
+                List.of("9:17: " + getCheckMessage(MSG_UNUSED_LOCAL_METHOD, "unused2")));
     }
 
 }
