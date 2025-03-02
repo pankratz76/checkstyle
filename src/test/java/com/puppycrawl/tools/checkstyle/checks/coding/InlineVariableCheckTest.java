@@ -23,7 +23,6 @@ import static com.puppycrawl.tools.checkstyle.checks.coding.UnusedLocalMethodChe
 
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
@@ -32,41 +31,14 @@ public class InlineVariableCheckTest extends AbstractModuleTestSupport {
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/coding/unusedlocalmethod";
+        return "com/puppycrawl/tools/checkstyle/checks/coding/inlinevariable";
     }
 
     @Test
     public void chain() throws Exception {
-        verifyWithInlineConfigParser(getPath("InputUnusedLocalMethodChainUnused.java"),
+        verifyWithInlineConfigParser(getPath("InputInlineVariableSimple.java"),
                 List.of("19:5: " + getCheckMessage(MSG_UNUSED_LOCAL_METHOD, "unused2")));
     }
 
-    @Test
-    public void multi() throws Exception {
-        verifyWithInlineConfigParser(getPath("InputUnusedLocalMethodMulti.java"),
-                List.of(
-                        "15:5: " + getCheckMessage(MSG_UNUSED_LOCAL_METHOD, "unused1"),
-                        "18:5: " + getCheckMessage(MSG_UNUSED_LOCAL_METHOD, "unused2"),
-                        "21:5: " + getCheckMessage(MSG_UNUSED_LOCAL_METHOD, "unused3")
-                ));
-    }
-
-    @Test
-    public void noUnused() throws Exception {
-        verifyWithInlineConfigParser(getPath("InputUnusedLocalMethodNoUnused.java"));
-    }
-
-    @Test
-    public void onlyOnPrivate() throws Exception {
-        verifyWithInlineConfigParser(getPath("InputUnusedLocalMethodOnlyOnPrivate.java"),
-                List.of("14:5: " + getCheckMessage(MSG_UNUSED_LOCAL_METHOD, "unusedPrivate")));
-    }
-
-    @Test
-    @Disabled
-    public void methodOverload() throws Exception {
-        verifyWithInlineConfigParser(getPath("InputUnusedLocalMethodMethodOverload.java"),
-                List.of("23:5: " + getCheckMessage(MSG_UNUSED_LOCAL_METHOD, "unused")));
-    }
 }
 
